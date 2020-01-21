@@ -1,4 +1,4 @@
-# ENT 3320 - Berkoy    
+# ENT 3320 Spring 2020 - Berkoy    
 
 (Are Your Prepared? Prototype V.2)  
 Technical Production at NYC College of Technology. Spring 2020.
