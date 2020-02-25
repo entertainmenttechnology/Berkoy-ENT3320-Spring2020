@@ -13,10 +13,10 @@ import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 //Runs once
 
-int Xrect=280;  int Yrect=340;
+int Xrect=280;  
+int Yrect=340;
 boolean issitting=false;
 boolean anotherboolean;
-long T;
 void setup()
 {
   //Create a canvas size 640 by 480
@@ -30,8 +30,9 @@ void setup()
   //Turns on user tracking for the kinect
   kinect.enableUser();
 PFont font;
-font = createFont("LetterGothicStd.otf", 32);
+font = createFont("Times New Roman", 20);
 textFont(font);
+//img
 
 }
 
@@ -39,6 +40,8 @@ textFont(font);
 //Runs continuously
 
 void draw() {
+  PImage img;
+img = loadImage("mask01.png");
   //Constantly asks for new data from the Kinect based on what we decided in the Setup
   kinect.update();
   //Calls the depth image to the point 0,0
@@ -65,41 +68,26 @@ void draw() {
     kinect.convertRealWorldToProjective(position, position);
     // change the color to red
     fill(255, 0, 0);
-    // draw an ellipse at the x and y position of each person's center of mass'
+  
+  
+  
+  
 
-
-    //ellipse(position.x, position.y, 20, 20);
-    //if (issitting==false){
-    //  triangle(30, 75, 58, 20, Xrect, Yrect);
-    //  stroke(5);
-    //  line(30, 20, 85, 75);
-    //}
-    //else if (position.x > Xrect && position.y > Yrect && position.x < Xrect + 100 && position.y < Yrect + 100){
-    //  textAlign(CENTER);
-    //  text("Sitting", position.x, position.y-25);
-    //  issitting=true;
-    //}
-    //else if (position.x < Xrect && position.y < Yrect && position.x > Xrect + 100 && position.y > Yrect + 100){
-    //  textAlign(CENTER);
-    //  text("Not sitting", position.x, position.y-25);
-    //}
-    //else if (issitting==false){
-    //  triangle(30, 75, 58, 20, Xrect, Yrect);
-    //  stroke(5);
-    //  line(30, 20, 85, 75);
-    //}
-    //else{
-    //  issitting=false;
-    //}
-      T=userList.size();
     if (position.x > Xrect && position.y > Yrect && position.x < Xrect + 100 && position.y < Yrect + 100){
       textAlign(CENTER);
-      text("Sitting", position.x, position.y-25);
-      T= userList.size() - 1;
+      //text("Sitting", position.x, position.y-25);
+      image(img, position.x-40, position.y-140,70,70);
+            println(int(position.z));
     }
     else{
-      text("Not sitting", position.x, position.y-25);
-
+      //text("Not sitting", position.x, position.y-70);
+            println(int(position.z));
+      image(img, position.x-40, position.y-140, 70,70);
+      //z1000 = img130px we need the x and y position
+      //z2000 = img70px we need the x and y position
+      //z4000
+      //z5000
+      //etc
     }
 
 
